@@ -1,0 +1,25 @@
+version: "1.0"
+services:
+  client-server:
+    image: siwonpada/docuflow-be:0.3.12
+    environment:
+      DATABASE_URL: "postgresql://postgres:1115@postgres:5432/docuflow"
+      AI_SERVER_URL: "http://docuflow-ai-docuflow-ai-1:5000"
+      REDIS_HOST: "redis"
+    networks:
+      - postgres_database
+      - docuflow-ai_ai
+      - redis_redis
+      - proxy
+    ports:
+      - 3000:3000
+
+networks:
+  postgres_database:
+    external: true
+  docuflow-ai_ai:
+    external: true
+  redis_redis:
+    external: true
+  proxy:
+    external: true

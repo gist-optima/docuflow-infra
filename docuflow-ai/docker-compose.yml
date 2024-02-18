@@ -1,0 +1,14 @@
+services:
+  docuflow-ai:
+    image: siwonpada/docuflow-ai:0.1.9
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    networks:
+      - ai
+      - default
+
+networks:
+  ai:
+    driver: bridge
